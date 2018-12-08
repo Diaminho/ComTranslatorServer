@@ -1,0 +1,51 @@
+chair - кресло 
+green - зеленый 
+band - (музыкальная) группа 
+sex - пол 
+finger - палец 
+independent - независимый 
+equipment - оборудование 
+north - север 
+message - послание 
+afternoon - время после полудня 
+fear - страх, бояться 
+drink - пить; спиртной напиток 
+fully - полностью 
+race - раса; гонка 
+strategy - стратегия 
+extra - дополнительный 
+scene - сцена 
+slightly - слегка 
+kitchen - кухня 
+arise - подниматься 
+speech - речь 
+network - сеть 
+tea - чай 
+peace - мир 
+failure - провал 
+employee - работник 
+ahead - вперед 
+scale - шкала 
+attend - посещать 
+hardly - едва 
+shoulder - плечо 
+otherwise - по-другому 
+railway - железная дорога 
+supply - запас; снабжать 
+owner - собственник 
+associate - общаться 
+corner - угол 
+past - прошлый 
+match - матч; спичка; соответствовать 
+sport - спорт 
+beautiful - красивый 
+hang - висеть 
+marriage - свадьба 
+civil - гражданский 
+sentence - предложение 
+crime - преступление 
+ball - мяч 
+marry - жениться 
+wind - ветер 
+truth - правда 
+protect - защищать
