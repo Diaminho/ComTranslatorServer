@@ -2,10 +2,7 @@ package sample.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
-import jssc.SerialPort;
-import jssc.SerialPortEvent;
-import jssc.SerialPortEventListener;
-import jssc.SerialPortException;
+import jssc.*;
 import sample.dictionary.Translator;
 
 public class MainController {
@@ -16,9 +13,7 @@ public class MainController {
     @FXML
     private TextArea logID;
 
-    public MainController(){
-    }
-
+    public MainController(){ }
 
 
     public static void closePort(){
@@ -33,14 +28,19 @@ public class MainController {
 
     @FXML
     public void onLaunchButton(){
+        if (SerialPortList.getPortNames().length!=0){
+            port=new SerialPort(SerialPortList.getPortNames()[0]);
+        }
         port=new SerialPort("/dev/pts/3");
-        openPort(port);
-        logID.setText("Запущен сервер\n");
-        logID.setText(logID.getText()+"Порт сервера: "+port.getPortName()+"\n");
+
+        if (openPort(port)) {
+            logID.setText("Запущен сервер\n");
+            logID.setText(logID.getText() + "Порт сервера: " + port.getPortName() + "\n");
+        }
     }
 
 
-    private void openPort(SerialPort port){
+    private boolean openPort(SerialPort port){
         try {
             port.openPort();
             port.setEventsMask(SerialPort.MASK_RXCHAR);
@@ -49,20 +49,26 @@ public class MainController {
                     SerialPort.STOPBITS_1,
                     SerialPort.PARITY_NONE);
             port.addEventListener(new EventListener());
+            return true;
             //port.addEventListener(new EventListener(), SerialPort.MASK_RXCHAR);
         } catch (SerialPortException ex) {
-            System.out.println("There are an error on writing string to port т: " + ex);
+            System.out.println("There are an error on writing string to port: " + ex);
+            logID.setText(logID.getText()+ex+'\n');
+            return false;
         }
     }
 
 
-    private void sendData(String text){
+    private boolean sendData(String text){
         try {
             port.writeString(text);
             logID.setText(logID.getText()+"Перевод: "+ text+'\n'+'\n');
+            return true;
         }
         catch (SerialPortException ex) {
             System.out.println("There are an error on writing string to port: " + ex);
+            logID.setText(logID.getText()+ex+'\n');
+            return false;
         }
     }
 
