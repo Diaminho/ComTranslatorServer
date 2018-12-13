@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Translator {
-    private static String path="src/sample/dictionary/dict.txt";
+    private static String path= System.getProperty("user.dir")+ "/dict.txt";
     static Map words;
 
     Translator(){}

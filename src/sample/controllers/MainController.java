@@ -2,6 +2,7 @@ package sample.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import jssc.*;
 import sample.dictionary.Translator;
 
@@ -12,6 +13,8 @@ public class MainController {
 
     @FXML
     private TextArea logID;
+    @FXML
+    private TextField portID;
 
     public MainController(){ }
 
@@ -28,10 +31,8 @@ public class MainController {
 
     @FXML
     public void onLaunchButton(){
-        if (SerialPortList.getPortNames().length!=0){
-            port=new SerialPort(SerialPortList.getPortNames()[0]);
-        }
-        port=new SerialPort("/dev/pts/3");
+
+        port = new SerialPort(portID.getText());
 
         if (openPort(port)) {
             logID.setText("Запущен сервер\n");
